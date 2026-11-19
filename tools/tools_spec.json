@@ -7,7 +7,7 @@
       "type": "function",
       "function": {
         "name": "consultar_ativo",
-        "description": "Retorna a ficha cadastral de uma câmera de CFTV ou estação meteorológica (SCA) pela TAG: tipo, fabricante, modelo, km, sentido, trecho, direção da lente, data de instalação, vida útil, criticidade, câmeras vizinhas e SCA mais próxima. Use antes de classificar qualquer alarme, para saber quem são as vizinhas e para onde a lente aponta.",
+        "description": "Retorna a ficha cadastral de uma câmera de CFTV ou estação meteorológica (SCA) pela TAG: tipo, fabricante, modelo, km, sentido, praça/pórtico, direção da lente, data de instalação, vida útil, criticidade, câmeras vizinhas e SCA mais próxima. Use antes de classificar qualquer alarme, para saber quem são as vizinhas e para onde a lente aponta.",
         "parameters": {
           "type": "object",
           "properties": {
