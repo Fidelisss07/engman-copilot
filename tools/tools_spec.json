@@ -1,0 +1,347 @@
+{
+  "projeto": "EngMan Copilot · Olho na Lente",
+  "versao": "sprint1",
+  "observacao": "Contrato (JSON Schema) das tools. Nenhuma está implementada nesta sprint; os retornos são simulados. Timeout padrão: 5 s por chamada, no máximo 3 chamadas de tool por pergunta.",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_ativo",
+        "description": "Retorna a ficha cadastral de uma câmera de CFTV ou estação meteorológica (SCA) pela TAG: tipo, fabricante, modelo, km, sentido, trecho, direção da lente, data de instalação, vida útil, criticidade, câmeras vizinhas e SCA mais próxima. Use antes de classificar qualquer alarme, para saber quem são as vizinhas e para onde a lente aponta.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG do ativo no formato do catálogo: CAM-<rodovia>-KM<km com 3 dígitos>-<sentido N ou S> (ex.: CAM-SP330-KM412-N) ou SCA-KM<km> (ex.: SCA-KM410). Nunca preencha uma TAG que o usuário não informou.",
+              "pattern": "^(CAM-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[NS]|SCA-KM[0-9]{3})$"
+            }
+          },
+          "required": [
+            "tag"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "retorno_esperado": {
+        "tag": "string",
+        "tipo_ativo": "cftv_ptz|cftv_fixa|sca",
+        "fabricante": "string",
+        "modelo": "string",
+        "km": "number",
+        "sentido": "N|S",
+        "praca_portico": "string",
+        "direcao_lente": "N|S|L|O",
+        "data_instalacao": "YYYY-MM-DD",
+        "vida_util_anos": "integer",
+        "criticidade": "A|B|C",
+        "vizinhas": [
+          "string"
+        ],
+        "sca_proxima": "string"
+      },
+      "comportamento_em_falha": {
+        "nao_encontrado": "{\"erro\":\"nao_encontrado\"} → o assistente diz que a TAG não está no cadastro, não inventa campos e indica conferir no cadastro de ativos ou com o supervisor do CCO.",
+        "timeout_5s": "{\"erro\":\"indisponivel\"} → avisa que a consulta não respondeu e não completa dado de cabeça.",
+        "campo_vazio": "campo ausente no retorno é informado como 'não cadastrado'."
+      },
+      "permissao": "leitura",
+      "status": "obrigatoria"
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_historico_falhas",
+        "description": "Retorna o histórico simulado de falhas e atendimentos de um ativo identificado por TAG, dentro de uma janela retroativa em meses: data, sintoma, causa identificada, classificação (REAL ou AMBIENTAL), ação, tempo de reparo, peça trocada, reincidência e número da OS. Use quando o usuário perguntar sobre reincidência, causa provável ou comportamento histórico de uma câmera, e na checagem (d) da triagem.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG do ativo no formato do catálogo: CAM-<rodovia>-KM<km com 3 dígitos>-<sentido N ou S> (ex.: CAM-SP330-KM412-N) ou SCA-KM<km> (ex.: SCA-KM410). Nunca preencha uma TAG que o usuário não informou.",
+              "pattern": "^(CAM-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[NS]|SCA-KM[0-9]{3})$"
+            },
+            "janela_meses": {
+              "type": "integer",
+              "description": "Janela retroativa em meses (padrão 12).",
+              "minimum": 1,
+              "maximum": 24,
+              "default": 12
+            },
+            "tipo_falha": {
+              "type": "string",
+              "description": "Filtro opcional pela natureza da falha.",
+              "enum": [
+                "lente_suja",
+                "teia_inseto",
+                "obstrucao",
+                "desfoque",
+                "sem_sinal",
+                "ptz_travada",
+                "ambiental",
+                "todas"
+              ],
+              "default": "todas"
+            }
+          },
+          "required": [
+            "tag"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "retorno_esperado": {
+        "registros": [
+          {
+            "id": "string",
+            "data": "YYYY-MM-DD",
+            "sintoma": "string",
+            "causa_identificada": "string",
+            "classificacao": "REAL|AMBIENTAL",
+            "acao": "string",
+            "tempo_reparo_h": "number",
+            "peca_trocada": "string",
+            "reincidencia": "sim|nao|-",
+            "os": "string|null"
+          }
+        ],
+        "total": "integer"
+      },
+      "comportamento_em_falha": {
+        "lista_vazia": "o assistente diz 'sem registro no período' — nunca 'a câmera não falhou'.",
+        "nao_encontrado": "{\"erro\":\"nao_encontrado\"} → mesma conduta de consultar_ativo.",
+        "timeout_5s": "{\"erro\":\"indisponivel\"} → avisa e segue a triagem marcando a checagem (d) como sem dado."
+      },
+      "permissao": "leitura",
+      "status": "obrigatoria"
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "abrir_ordem_servico",
+        "description": "Abre uma ordem de serviço (simulada) no sistema de gestão de campo e retorna o número da OS. Só chame DEPOIS que o usuário aprovar o rascunho mostrado na conversa. Nunca chame para alarme classificado como AMBIENTAL.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG do ativo no formato do catálogo: CAM-<rodovia>-KM<km com 3 dígitos>-<sentido N ou S> (ex.: CAM-SP330-KM412-N) ou SCA-KM<km> (ex.: SCA-KM410). Nunca preencha uma TAG que o usuário não informou.",
+              "pattern": "^(CAM-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[NS]|SCA-KM[0-9]{3})$"
+            },
+            "tipo_intervencao": {
+              "type": "string",
+              "description": "Tipo de intervenção.",
+              "enum": [
+                "corretiva",
+                "preventiva",
+                "inspecao",
+                "cbm"
+              ]
+            },
+            "prioridade": {
+              "type": "string",
+              "description": "Prioridade pela matriz de criticidade (KB-06): P1 até 4 h, P2 até 24 h, P3 até 72 h.",
+              "enum": [
+                "P1",
+                "P2",
+                "P3"
+              ]
+            },
+            "descricao": {
+              "type": "string",
+              "description": "Descrição em até 5 linhas: sintoma, resultado das 4 checagens da triagem, hipótese marcada como HIPÓTESE.",
+              "maxLength": 600
+            },
+            "janela_inicio": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Início da janela sugerida (ISO 8601)."
+            },
+            "janela_fim": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Fim da janela sugerida (ISO 8601), depois de janela_inicio."
+            },
+            "confirmado_pelo_usuario": {
+              "type": "boolean",
+              "const": true,
+              "description": "Precisa ser true: o usuário aprovou o rascunho nesta conversa."
+            }
+          },
+          "required": [
+            "tag",
+            "tipo_intervencao",
+            "prioridade",
+            "descricao",
+            "janela_inicio",
+            "janela_fim",
+            "confirmado_pelo_usuario"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "retorno_esperado": {
+        "numero_os": "string (simulado, ex.: OS-SIM-01234)",
+        "status": "aberta"
+      },
+      "comportamento_em_falha": {
+        "sem_confirmacao": "a orquestração bloqueia a chamada e o assistente pede a aprovação.",
+        "parametro_invalido": "{\"erro\":\"parametro_invalido\",\"campo\":\"...\"} → corrige o campo e mostra de novo o rascunho.",
+        "os_duplicada": "{\"erro\":\"os_duplicada\",\"numero_os\":\"...\"} (mesma TAG com OS aberta há menos de 24 h) → mostra a OS existente em vez de abrir outra.",
+        "timeout_5s": "entrega o rascunho para o operador abrir manualmente; nunca mostra número de OS que não veio no retorno."
+      },
+      "permissao": "escrita simulada, com confirmação humana",
+      "status": "obrigatoria"
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_procedimento",
+        "description": "Retorna o POP (procedimento operacional padrão) aplicável a um tipo de ativo e tipo de intervenção, com código, versão, passo a passo e pré-requisitos de segurança (NR-10, NR-35, EPI, sinalização de via). Use sempre que o usuário pedir 'como faz'. Nunca escreva um procedimento que não veio desta tool.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tipo_ativo": {
+              "type": "string",
+              "description": "Tipo do ativo.",
+              "enum": [
+                "cftv_ptz",
+                "cftv_fixa",
+                "sca"
+              ]
+            },
+            "tipo_intervencao": {
+              "type": "string",
+              "description": "Tipo de intervenção.",
+              "enum": [
+                "corretiva",
+                "preventiva",
+                "inspecao",
+                "cbm"
+              ]
+            }
+          },
+          "required": [
+            "tipo_ativo",
+            "tipo_intervencao"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "retorno_esperado": {
+        "codigo": "string (ex.: POP-CFTV-002)",
+        "titulo": "string",
+        "versao": "string",
+        "pre_requisitos_seguranca": [
+          "string"
+        ],
+        "passos": [
+          "string"
+        ]
+      },
+      "comportamento_em_falha": {
+        "nao_encontrado": "{\"erro\":\"nao_encontrado\"} → diz que não há POP para essa combinação e encaminha ao responsável pela Engenharia de Manutenção.",
+        "timeout_5s": "avisa que a consulta não respondeu; não escreve passos de memória."
+      },
+      "permissao": "leitura",
+      "status": "obrigatoria"
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "calcular_metricas_confiabilidade",
+        "description": "Calcula, a partir das falhas REAIS do histórico (ignora as AMBIENTAIS), a taxa de falha λ, o MTBF, a confiabilidade R(t)=e^(−λt) e o intervalo de manutenção para manter 90% de confiabilidade, além da tendência (melhorando, estável, piorando). Liga a conversa ao Tema 2 do briefing.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "TAG do ativo no formato do catálogo: CAM-<rodovia>-KM<km com 3 dígitos>-<sentido N ou S> (ex.: CAM-SP330-KM412-N) ou SCA-KM<km> (ex.: SCA-KM410). Nunca preencha uma TAG que o usuário não informou.",
+              "pattern": "^(CAM-[A-Z]{2}[0-9]{3}-KM[0-9]{3}-[NS]|SCA-KM[0-9]{3})$"
+            },
+            "periodo_meses": {
+              "type": "integer",
+              "description": "Janela do histórico usada no cálculo (padrão 12).",
+              "minimum": 3,
+              "maximum": 24,
+              "default": 12
+            },
+            "tempo_operacao_horas": {
+              "type": "number",
+              "description": "Tempo t, em horas, para o qual se quer R(t) (ex.: 720 = 30 dias).",
+              "minimum": 1,
+              "default": 720
+            }
+          },
+          "required": [
+            "tag"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "retorno_esperado": {
+        "n_falhas_reais": "integer",
+        "lambda_por_hora": "number",
+        "mtbf_horas": "number",
+        "r_t": "number",
+        "intervalo_para_r90_horas": "number",
+        "tendencia": "melhorando|estavel|piorando",
+        "premissa": "taxa de falha constante (modelo exponencial)"
+      },
+      "comportamento_em_falha": {
+        "dados_insuficientes": "menos de 2 falhas reais no período → {\"erro\":\"dados_insuficientes\"}; o assistente não estima λ e sugere período maior.",
+        "nao_encontrado": "igual a consultar_ativo."
+      },
+      "permissao": "leitura",
+      "status": "diferencial"
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_ativos_por_criticidade",
+        "description": "Lista as câmeras ordenadas por criticidade (A, B, C) e por número de alarmes pendentes, para o operador decidir a ordem de atendimento quando chegam muitos alarmes ao mesmo tempo.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tipo_ativo": {
+              "type": "string",
+              "enum": [
+                "cftv_ptz",
+                "cftv_fixa",
+                "sca",
+                "todos"
+              ],
+              "default": "todos",
+              "description": "Filtro opcional por tipo."
+            },
+            "limite": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 10,
+              "description": "Quantos ativos retornar."
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "retorno_esperado": {
+        "ativos": [
+          {
+            "tag": "string",
+            "criticidade": "A|B|C",
+            "alarmes_pendentes": "integer",
+            "os_abertas": "integer"
+          }
+        ]
+      },
+      "comportamento_em_falha": {
+        "lista_vazia": "diz que não há pendências.",
+        "timeout_5s": "avisa que a consulta não respondeu."
+      },
+      "permissao": "leitura",
+      "status": "diferencial"
+    }
+  ]
+}

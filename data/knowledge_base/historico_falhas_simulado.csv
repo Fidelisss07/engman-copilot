@@ -1,0 +1,78 @@
+id,data,tag,sintoma,causa_identificada,classificacao,acao,tempo_reparo_h,peca_trocada,reincidencia,os,simulado
+H001,2025-11-01,CAM-SP330-KM457-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,2,-,nao,OS-SIM-00001,sim
+H002,2025-11-07,CAM-SP330-KM421-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,3,conector RJ45,nao,OS-SIM-00002,sim
+H003,2025-11-08,CAM-SP330-KM400-S,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,8,módulo pan/tilt,nao,OS-SIM-00003,sim
+H004,2025-11-15,CAM-SP330-KM451-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,2,-,nao,OS-SIM-00004,sim
+H005,2025-11-22,CAM-SP330-KM424-S,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,5,conector RJ45,nao,OS-SIM-00005,sim
+H006,2025-12-01,CAM-SP330-KM445-S,imagem degradada,neblina (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H007,2025-12-02,CAM-SP330-KM436-S,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H008,2025-12-12,CAM-SP330-KM433-S,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H009,2025-12-15,CAM-SP330-KM430-S,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,6,módulo pan/tilt,nao,OS-SIM-00009,sim
+H010,2025-12-22,CAM-SP330-KM451-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,2,conector RJ45,nao,OS-SIM-00010,sim
+H011,2025-12-23,CAM-SP330-KM403-S,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H012,2025-12-23,CAM-SP330-KM412-S,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,5,módulo pan/tilt,nao,OS-SIM-00012,sim
+H013,2026-01-05,CAM-SP330-KM415-N,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H014,2026-01-06,CAM-SP330-KM448-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,2,conector RJ45,nao,OS-SIM-00014,sim
+H015,2026-01-14,CAM-SP330-KM418-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,1,-,nao,OS-SIM-00015,sim
+H016,2026-01-23,CAM-SP330-KM442-N,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H017,2026-01-30,CAM-SP330-KM406-S,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H018,2026-02-02,CAM-SP330-KM442-N,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,1,-,nao,OS-SIM-00018,sim
+H019,2026-02-09,CAM-SP330-KM445-N,imagem sem foco,vibração do poste soltou o ajuste,REAL,ajuste de foco,3,-,nao,OS-SIM-00019,sim
+H020,2026-02-10,CAM-SP330-KM424-N,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,3,módulo pan/tilt,nao,OS-SIM-00020,sim
+H021,2026-02-15,CAM-SP330-KM406-N,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,2,-,nao,OS-SIM-00021,sim
+H022,2026-02-17,CAM-SP330-KM418-N,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H023,2026-02-25,CAM-SP330-KM436-S,imagem degradada,neblina (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H024,2026-03-07,CAM-SP330-KM412-N,imagem sem foco,vibração do poste soltou o ajuste,REAL,ajuste de foco,1,-,nao,OS-SIM-00024,sim
+H025,2026-03-13,CAM-SP330-KM430-N,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,1,-,nao,OS-SIM-00025,sim
+H026,2026-03-19,CAM-SP330-KM406-S,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,3,módulo pan/tilt,nao,OS-SIM-00026,sim
+H027,2026-03-20,CAM-SP330-KM418-S,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,2,-,nao,OS-SIM-00027,sim
+H028,2026-03-25,CAM-SP330-KM424-N,imagem degradada,neblina (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H029,2026-04-02,CAM-SP330-KM412-N,imagem sem foco,vibração do poste soltou o ajuste,REAL,ajuste de foco,2,-,sim,OS-SIM-00029,sim
+H030,2026-04-26,CAM-SP330-KM457-N,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,2,-,nao,OS-SIM-00030,sim
+H031,2026-05-02,CAM-SP330-KM415-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,4,conector RJ45,nao,OS-SIM-00031,sim
+H032,2026-05-09,CAM-SP330-KM451-N,parte da imagem coberta,galho/vegetação na frente da câmera,REAL,poda,2,-,nao,OS-SIM-00032,sim
+H033,2026-05-21,CAM-SP330-KM436-S,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H034,2026-05-25,CAM-SP330-KM442-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,1,-,nao,OS-SIM-00034,sim
+H035,2026-05-28,CAM-SP330-KM418-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,1,-,nao,OS-SIM-00035,sim
+H036,2026-06-03,CAM-SP330-KM421-N,imagem degradada,neblina (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H037,2026-06-18,CAM-SP330-KM415-N,parte da imagem coberta,galho/vegetação na frente da câmera,REAL,poda,2,-,nao,OS-SIM-00037,sim
+H038,2026-06-18,CAM-SP330-KM424-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,3,conector RJ45,nao,OS-SIM-00038,sim
+H039,2026-06-20,CAM-SP330-KM424-S,imagem sem foco,vibração do poste soltou o ajuste,REAL,ajuste de foco,3,-,nao,OS-SIM-00039,sim
+H040,2026-06-23,CAM-SP330-KM433-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,5,conector RJ45,nao,OS-SIM-00040,sim
+H041,2026-06-25,CAM-SP330-KM400-S,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,2,conector RJ45,nao,OS-SIM-00041,sim
+H042,2026-06-27,CAM-SP330-KM445-S,parte da imagem coberta,galho/vegetação na frente da câmera,REAL,poda,2,-,nao,OS-SIM-00042,sim
+H043,2026-06-30,CAM-SP330-KM424-S,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H044,2026-07-01,CAM-SP330-KM412-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,1,-,nao,OS-SIM-00044,sim
+H045,2026-07-03,CAM-SP330-KM418-N,imagem sem foco,vibração do poste soltou o ajuste,REAL,ajuste de foco,3,-,nao,OS-SIM-00045,sim
+H046,2026-07-15,CAM-SP330-KM421-N,imagem degradada,neblina (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H047,2026-07-15,CAM-SP330-KM427-N,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H048,2026-07-28,CAM-SP330-KM409-N,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,2,-,nao,OS-SIM-00048,sim
+H049,2026-07-29,CAM-SP330-KM400-S,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H050,2026-07-29,CAM-SP330-KM418-S,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,7,módulo pan/tilt,nao,OS-SIM-00050,sim
+H051,2026-07-30,CAM-SP330-KM418-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,2,-,sim,OS-SIM-00051,sim
+H052,2026-08-09,CAM-SP330-KM439-S,imagem degradada,neblina (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H053,2026-08-12,CAM-SP330-KM412-N,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H054,2026-08-14,CAM-SP330-KM409-N,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H055,2026-08-19,CAM-SP330-KM421-N,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H056,2026-09-02,CAM-SP330-KM418-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,1,-,sim,OS-SIM-00056,sim
+H057,2026-09-05,CAM-SP330-KM412-N,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H058,2026-09-05,CAM-SP330-KM433-N,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,1,-,nao,OS-SIM-00058,sim
+H059,2026-09-10,CAM-SP330-KM421-N,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,1,-,nao,OS-SIM-00059,sim
+H060,2026-09-10,CAM-SP330-KM430-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,3,conector RJ45,nao,OS-SIM-00060,sim
+H061,2026-09-13,CAM-SP330-KM448-N,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,3,módulo pan/tilt,nao,OS-SIM-00061,sim
+H062,2026-10-02,CAM-SP330-KM442-S,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H063,2026-10-03,CAM-SP330-KM445-N,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,1,-,nao,OS-SIM-00063,sim
+H064,2026-10-05,CAM-SP330-KM406-S,imagem degradada,neblina (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H065,2026-10-09,CAM-SP330-KM418-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,2,-,sim,OS-SIM-00065,sim
+H066,2026-10-15,CAM-SP330-KM442-S,imagem sem foco,vibração do poste soltou o ajuste,REAL,ajuste de foco,2,-,nao,OS-SIM-00066,sim
+H067,2026-10-16,CAM-SP330-KM430-N,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,5,conector RJ45,sim,OS-SIM-00067,sim
+H068,2026-10-16,CAM-SP330-KM433-N,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,1,-,nao,OS-SIM-00068,sim
+H069,2026-10-21,CAM-SP330-KM424-N,PTZ não gira,motor do pan com folga,REAL,troca do módulo pan/tilt,6,módulo pan/tilt,nao,OS-SIM-00069,sim
+H070,2026-10-21,CAM-SP330-KM445-N,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H071,2026-10-23,CAM-SP330-KM406-S,tela preta no CCO,conector RJ45 oxidado,REAL,troca de conector,4,conector RJ45,nao,OS-SIM-00071,sim
+H072,2026-10-24,CAM-SP330-KM421-S,parte da imagem coberta,galho/vegetação na frente da câmera,REAL,poda,4,-,nao,OS-SIM-00072,sim
+H073,2026-10-30,CAM-SP330-KM418-S,reflexo branco no IR à noite,teia de aranha na frente da lente,REAL,limpeza + repelente,2,-,nao,OS-SIM-00073,sim
+H074,2026-11-02,CAM-SP330-KM427-N,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,2,-,nao,OS-SIM-00074,sim
+H075,2026-11-03,CAM-SP330-KM412-N,imagem degradada,sol de frente na lente,AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
+H076,2026-11-10,CAM-SP330-KM403-S,imagem embaçada de dia,barro/fuligem na lente,REAL,limpeza de lente,2,-,nao,OS-SIM-00076,sim
+H077,2026-11-10,CAM-SP330-KM433-N,imagem degradada,chuva forte (SCA),AMBIENTAL,nenhuma (monitorado),0,-,-,,sim
