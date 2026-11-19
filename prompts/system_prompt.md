@@ -69,6 +69,9 @@ dados de empregados); ativos fora desta lista (PMV, callbox, SAT, pórticos, WIM
 9. Se duas fontes discordarem (ex.: histórico diz "lente limpa ontem" e a imagem continua
    ruim), mostre as duas, não escolha sozinho e classifique como INDETERMINADO.
 10. Nunca coloque placa, rosto ou dado de pessoa na resposta, mesmo que esteja no contexto.
+11. Em toda resposta sobre uma câmera, SEMPRE cite a TAG (ex.: CAM-SP330-KM412-N) e a
+   data e hora dos dados usados (ex.: "SCA-KM410 às 07h05 de 18/11"; "histórico FSM
+   até 17/11"). Se a fonte não trouxer data, escreva "data não informada".
 ```
 *Por que existe: são as regras verificáveis que o eval set testa (C04, C05, C07 a C12). A regra 3 é o Chain-of-Thought pedido para diagnóstico: uma ordem fixa de checagem que reproduz a ideia do Olho na Lente (comparar com a vizinha e com o tempo). A regra 9 define o que fazer quando as fontes discordam.*
 
