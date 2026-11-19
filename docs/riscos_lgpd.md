@@ -32,7 +32,7 @@ São **11 riscos** (mínimo pedido: 8).
 | Boletim de campo sem identificação de pessoa | Dados contratuais e de arrecadação |
 | Leituras da SCA (chuva, visibilidade) | Qualquer dado real da Motiva nesta fase acadêmica |
 
-**Base legal (se o sistema fosse real):** o uso é de dado técnico de equipamento, não de pessoa. Se algum quadro de imagem chegar a ser processado na borda, só o resultado ("imagem degradada: sim/não") sai da câmera; o quadro não é guardado nem enviado ao modelo.
+**Base legal (se o sistema fosse real):** o uso é de dado técnico de equipamento, não de pessoa. Se algum quadro de imagem chegar a ser processado na borda, só o resultado ("imagem degradada: sim/não") sai da câmera; o quadro não é guardado nem enviado ao modelo, assim se adequando a LGPD. 
 
 ## Ética
 
